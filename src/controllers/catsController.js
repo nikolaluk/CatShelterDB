@@ -18,6 +18,12 @@ router.get('/edit/:id', async(req,res) => {
     res.render('editCat', cat);
 });
 
+router.get('/shelter/:id', async(req,res) => {
+    const cat = await catsManager.getById(req.params.id);
+
+    res.render('catShelter',cat);
+});
+
 
 //POST
 router.post('/add-breed', (req, res) => {
@@ -37,6 +43,14 @@ router.post('/edit/:id', async(req,res) => {
 
     await catsManager.updateById(req.params.id,name,description,imageUrl,breed);
 
+    res.redirect('/');
+});
+
+router.post('/shelter/:id', async(req,res) => {
+    const id = req.params.id;
+
+    await catsManager.deleteById(id);
+    
     res.redirect('/');
 });
 

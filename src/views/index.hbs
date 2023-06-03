@@ -7,15 +7,16 @@
             </ul>
         </nav>
         <h1>Cat Shelter</h1>
-        <form action="/search">
-            <input type="text">
-            <button type="button">Search</button>
+        <form action="" method="">
+            <input type="text" class="search" name="search" value="{{search}}" placeholder="Search...">
+            <button type="submit">Search</button>
         </form>
     </header>
 
     <main>
         <section class="cats">
             <ul>
+                {{#if cats}}
                 {{#each cats}}
                     <li>
                     <img src="{{imageUrl}}" alt="{{name}}">
@@ -28,6 +29,9 @@
                     </ul>
                     </li>
                 {{/each}}
+                {{else}}
+                    <h3 style="margin-left:auto; margin-right:auto">No cats found.</h3>
+                {{/if}}
             </ul>
         </section>
     </main>
