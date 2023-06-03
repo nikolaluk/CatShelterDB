@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
 const homeController = require('./controllers/homeController');
-const accessoryController = require('./controllers/accessoryController');
+//const catsController = require('./controllers/catsController');
 
 router.use(homeController);
-router.use('/accessories',accessoryController);
+//router.use('/cats',catsController);
 
 router.get('*',(req,res) => {
-    res.render('404');
+    res.send('404');
 });
 
 module.exports = router;
