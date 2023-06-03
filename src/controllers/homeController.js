@@ -1,10 +1,9 @@
 const router = require('express').Router();
+const catsManager = require('../managers/catsManager');
 
-//GET
-router.get('/', async (req,res) => {
-    //const cats = await catManager.getAll();
-
-    res.render('index');
+router.get('/', async(req,res) => {
+    const cats = await catsManager.getAll();
+    res.render('index',{cats});
 });
 
 module.exports = router;

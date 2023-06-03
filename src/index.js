@@ -7,7 +7,10 @@ const handlebarsConfig = require('./config/handlebarsConfig');
 const dbConfig = require('./config/dbConfig');
 
 //Router
-const router = require('./routes');
+const homeController = require('./controllers/homeController');
+const catsController = require('./controllers/catsController');
+
+//const router = require('./routes');
 
 //App
 const app = express();
@@ -21,6 +24,11 @@ dbConfig()
     .catch((err) => console.log('DB error', err.message));
 
 //Routes
-app.use(router);
+app.use(homeController);
+app.use('/cats',catsController);
+
+
+
+
 
 app.listen(port, () => console.log(`Server listening on port ${port}...`));
